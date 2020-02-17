@@ -1,0 +1,11 @@
+.search-panel {
+  width: auto;
+  margin: 0 0 .5rem 0;
+  flex-grow: 1;
+}
+
+@media (min-width: 525px) {
+  .search-panel {
+    margin: 0 .2rem 0 0;
+  }
+}

@@ -1,0 +1,23 @@
+.todo-list-item {
+  font-size: 1.05rem;
+}
+
+.todo-list-item button {
+  width: 2.5rem;
+  margin: .15rem;
+}
+
+.todo-list-item-label {
+  line-height: 2.2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+@media (min-width: 615px) {
+  .todo-list-item {
+    font-size: 1.25rem;
+  }
+  .todo-list-item-label {
+    margin-left: 1.25rem;
+  }
+}

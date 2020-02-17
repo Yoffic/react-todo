@@ -1,0 +1,17 @@
+.app-header {
+  margin-top: 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header h1 {
+  flex-grow: 1;
+}
+
+@media (min-width: 445px) {
+  .app-header {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
