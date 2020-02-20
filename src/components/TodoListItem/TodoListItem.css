@@ -13,6 +13,15 @@
   user-select: none;
 }
 
+.todo-list-item.done .todo-list-item-label {
+  text-decoration: line-through;
+}
+
+.todo-list-item.important .todo-list-item-label {
+  font-weight: bold;
+  color: rgb(162, 12, 95);
+}
+
 @media (min-width: 615px) {
   .todo-list-item {
     font-size: 1.25rem;
