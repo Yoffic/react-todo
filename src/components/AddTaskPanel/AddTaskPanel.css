@@ -1,3 +1,7 @@
-.add-task-panel.btn {
-  min-width: 2rem;
+.add-task-panel {
+  width: 100%;
+}
+
+.add-task-panel .btn {
+  min-width: 6rem;
 }
