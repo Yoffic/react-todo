@@ -4,18 +4,18 @@ import './AddTaskPanel.css';
 
 export default class AddTaskPanel extends Component {
   state = {
-    label: ''
+    input: ''
   };
 
   onInputChange = (e) => {
     this.setState({
-      label: e.target.value
+      input: e.target.value
     });
   };
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.onAdded(this.state.label);
+    this.props.onAdded(this.state.input);
     this.setState({
       input: ''
     });
