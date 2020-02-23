@@ -17,6 +17,7 @@ export default class App extends Component {
       this.createTodoItem('Crack The Code'),
     ],
     term: '',
+    filter: 'all',
   };
 
   createTodoItem(label) {
@@ -86,7 +87,11 @@ export default class App extends Component {
     this.setState({ term });
   };
 
-  search = (items, text) => {
+  onFilterChange = (filter) => {
+    this.setState({ filter });
+  };
+
+  search(items, text) {
     if (text.length === 0) {
       return items;
     }
@@ -94,23 +99,38 @@ export default class App extends Component {
     return items.filter((item) => item.label.toLowerCase().includes(text.toLowerCase()));
   };
 
+  filter(items, filter) {
+    switch(filter) {
+      case 'all':
+        return items;
+      case 'active':
+        return items.filter((item) => !item.done);
+      case 'done':
+        return items.filter((item) => item.done);
+      default:
+        return items;
+    }
+  }
+
   render() {
-    const { todoData, term } = this.state;
-    const visibleItems = this.search(todoData, term);
+    const { todoData, term, filter } = this.state;
+    const visibleItems = this.filter(this.search(todoData, term), filter);
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
     return (
       <div className='todo-app'>
-        <AppHeader toDo={todoCount} done={doneCount}/>
+        <AppHeader toDo={ todoCount } 
+                   done={ doneCount }/>
         <div className='top-panel d-flex'>
           <SearchPanel onSearchChange={ this.onSearchChange }/>
-          <ItemStatusFilter />
+          <ItemStatusFilter filter={ filter }
+                            onFilterChange={ this.onFilterChange }
+            />
         </div>
-        <TodoList 
-          todos={visibleItems} 
-          onDeleted={ this.deleteItem }
-          onImportant={ this.onToggleImportant }
-          onDone = { this.onToggleDone }
+        <TodoList todos={ visibleItems } 
+                  onDeleted={ this.deleteItem }
+                  onImportant={ this.onToggleImportant }
+                  onDone = { this.onToggleDone }
           />
         <AddTaskPanel onAdded={ this.addItem }/>
       </div>
