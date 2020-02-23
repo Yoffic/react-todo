@@ -17,7 +17,7 @@ export default class AddTaskPanel extends Component {
     e.preventDefault();
     this.props.onAdded(this.state.label);
     this.setState({
-      label: ''
+      input: ''
     });
   };
 
@@ -31,7 +31,7 @@ export default class AddTaskPanel extends Component {
           className="form-control mr-2 add-task-input"
           onChange={ this.onInputChange }
           placeholder="Type task here"
-          value={ this.state.label } />
+          value={ this.state.input } />
         <button className="btn btn-outline-info">Add Task</button>
       </form>
     );
